@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<!-- ***DEBUT HEADER*** -->
+<html lang="en" data-lt-installed="true" class=" bdxqzrj idc0_343"><head>
+<title>Dossier �tudiant - Polytechnique Montr�al</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<!-- Basic Page Needs
+  ================================================== -->
+
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Mobile Specific Metas
+  ================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/base.css">
+<link rel="stylesheet" href="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/skeleton.css">
+<link rel="stylesheet" href="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/layout.css">
+<link rel="stylesheet" href="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/de_base.css">
+<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<!-- Favicons
+	================================================== -->
+<link rel="shortcut icon" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/favicon.ico">
+<link rel="apple-touch-icon" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon-114x114.png">
+
+
+<script language="javascript" type="text/javascript" src="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/poly.js"></script>
+<script language="javascript" type="text/javascript" src="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/jquery-3.1.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/jquery.blockUI.js"></script>
+	
+<style type="text/css">
+blockquote.warning {
+	margin-bottom: 40px;
+	font-size: 17px;
+	font-weight: 300;
+	line-height: 28px;
+	background: #4c4948;
+	color: #f5f5f1;
+	margin: 0 0 24px;
+	max-width: 480px;
+	padding: 16px;
+}
+</style>	
+</head>
+<body onload="initialiser()">
+	<div id="bordureEntete"></div>
+	<div id="wrapper">
+		<div id="filetEntete"></div>
+		<div class="container">
+			<div class="sixteen columns" id="headerDiv">
+				<img src="Dossier%20%C3%A9tudiant%20-%20Polytechnique%20Montr%C3%A9al_fichiers/PolyGaucheLogo.png" alt="Logo Polytechnique Montréal" id="logoPolyEntete">
+				<h1 class="titreEntete">DOSSIER des ÉTUDIANT</h1>
+			</div>
+			<!-- ***FIN HEADER*** -->
+			<div class="row">
+				<div class="sixteen columns">
+					<span class="lienEntete">[<a href="https://www.polymtl.ca/aide-dossier-etudiant/" target="_blank">AIDE</a>]
+					</span>
+					<!-- <h2 class="titre">&nbsp;</h2> -->
+				</div>
+			</div>
+			
+			<form method="post" action="/WebEtudiant7/ValidationServlet" onsubmit="loginValidation(this)">
+				<div class="sixteen columns">
+					<label for="rue">Code d'acc�s</label> <input type="text" id="code" name="code" maxlength="8">
+				</div>
+				<div class="sixteen columns">
+					<label for="rue">Mot de passe </label> <input type="password" id="nip" name="nip" maxlength="8" value="">
+				</div>
+				<div class="sixteen columns">
+					<label for="rue">Date de naissance <span class="sublabel">(AAAAMMJJ
+							ou AAMMJJ - Champ masqu�)</span></label> <input type="password" id="naissance" name="naissance" maxlength="8" value="" style="float: left;">
+					<div class="sixteen columns" style="position: absolute; color: #f00; font-weight: bold;" id="msgError"></div>
+				</div>
+
+				<div class="sixteen columns">
+					<input type="submit" value="Connexion">
+				
+				</div>
+				<div class="sixteen columns">
+					<a href="https://dossieretudiant.polymtl.ca/WebEtudiant7/AfficheFormRecupServlet?action=CA" class="lienInstruction">Récupérer le code d'accès</a>
+							 <a href="https://dossieretudiant.polymtl.ca/WebEtudiant7/AfficheFormRecupServlet?action=MP" class="lienInstruction">Récupérer le mot de passe</a>
+							
+							
+					<blockquote class="warning">Nous �prouvons pr�sentement des
+						difficult�s techniques qui sont � l'origine du ralentissement de
+						l'application web "dossieretudiant". Veuillez-nous en excuser.
+						Nous travaillons actuellement � r�gler ce probl�me et esp�rons
+						pouvoir r�tablir la situation le plus rapidement possible. Merci
+						de votre patience.</blockquote>
+						
+				</div>
+
+			</form>
+			<!-- ***DEBUT FOOTER*** -->
+
+		</div>
+		<div id="filetPiedDePage"></div>
+		<span id="version_date">11-Mars-2024</span>
+		<div id="version">v.26.2.9</div>
+	</div>
+
+
+</body><!-- ***FIN FOOTER*** --></html>
