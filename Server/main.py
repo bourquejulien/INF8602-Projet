@@ -4,7 +4,7 @@ import logging
 
 from src import container
 from src.database_service import Database
-from src import info_controller, login_controller
+from src import login_controller
 from flask import Flask
 from flask import request
 from flask_cors import CORS
@@ -22,7 +22,6 @@ def main():
     app = Flask(__name__)
     CORS(app)
     app.register_blueprint(login_controller.blueprint, url_prefix="/login")
-    app.register_blueprint(info_controller.blueprint, url_prefix="/info")
     app.run(host="0.0.0.0")
     
 
