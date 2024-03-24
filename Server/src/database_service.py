@@ -16,12 +16,12 @@ class Database:
     def login(self, login_info: LoginInfo) -> User | None:
         user: User = None
 
-        result = self.execute(f"select * from users where username = '{login_info.username}'")[0]
+        results = self.execute(f"select * from users where username = '{login_info.username}'")
 
-        if result is None:
+        if len(results) == 0 or results[0] is None:
             return None
         
-        user = User(*result)
+        user = User(*results[0])
         
         if user.password != login_info.password:
             return None
