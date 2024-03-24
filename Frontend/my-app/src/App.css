@@ -1,0 +1,31 @@
+body {
+	background-image: url("../public/5000px.png");
+	background-position: center;
+	background-repeat: repeat-y;
+	background-position: top;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#filetEntete {
+	height: 1px;
+	width: 100%;
+	background-color: #000000;
+	position: absolute;
+	top: 116px;
+}
+
+#filetPiedDePage {
+	height: 15px;
+	background-image: url("../public/59pxcouleur.png");
+	background-position: center;
+	background-repeat: repeat-x;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
