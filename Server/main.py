@@ -10,14 +10,28 @@ from flask import request
 from flask_cors import CORS
 import atexit
 
+def init_database():
+    container.database = Database("toto", "toto", "localhost", 5432)
+
+    if container.database.is_init():
+        return
+
+    data: str = None
+    with open("init.sql", "r") as f:
+        data = f.read()
+        
+    container.database.execute_and_commit(data)
+
 def exit_handler():
-    container.database.close()
+    if container.database is not None:
+        container.database.close()
     logging.info("Exiting...")
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    container.database = Database("toto", "toto", "localhost", 5432)
     atexit.register(exit_handler)
+
+    init_database()
 
     app = Flask(__name__)
     CORS(app)
