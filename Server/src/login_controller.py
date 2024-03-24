@@ -3,7 +3,7 @@ import json
 import logging
 from .classes.user import User
 from .classes.login_info import LoginInfo
-from .container import database
+from . import container
 
 from flask import Blueprint, request
 
@@ -12,8 +12,9 @@ blueprint = Blueprint("login", __name__)
 
 @blueprint.route("/", methods=["post"])
 def login():
-    username = request.form["username"]
-    password = request.form["password"]
+    username = request.args["username"]
+    password = request.args["password"]
+    database = container.database
 
     user: None | User = database.login(LoginInfo(username, password))
 

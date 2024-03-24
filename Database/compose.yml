@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=toto
+      - POSTGRES_USER=toto
+      - POSTGRES_DB=users
