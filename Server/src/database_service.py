@@ -11,9 +11,6 @@ class Database:
     def __init__(self, username: str, password: str, host: str, port: int) -> None:
         self.connection = psycopg.connect(f"dbname={DATABASE_NAME} user={username} host={host} password={password} port={port}")
 
-    def login(login_info: LoginInfo) -> bool:
-        ...
-
     def get_info(login_info: LoginInfo) -> User:
         ...
     

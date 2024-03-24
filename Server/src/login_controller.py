@@ -1,5 +1,9 @@
+import dataclasses
+import json
 import logging
-from container import database
+from .classes.user import User
+from .classes.login_info import LoginInfo
+from .container import database
 
 from flask import Blueprint, request
 
@@ -11,6 +15,9 @@ def login():
     username = request.form["username"]
     password = request.form["password"]
 
-    database
+    user: None | User = database.login(LoginInfo(username, password))
 
-    return "success", 200
+    if user is None:
+        return "Bad login", 500
+
+    return json.dumps(dataclasses.asdict(user)), 200
