@@ -6,12 +6,11 @@ from src import container
 from src.database_service import Database
 from src import login_controller
 from flask import Flask
-from flask import request
 from flask_cors import CORS
 import atexit
 
-def init_database():
-    container.database = Database("toto", "toto", "localhost", 5432)
+def init_database(username: str, password: str, host: str, port: int):
+    container.database = Database(username, password, host, port)
 
     if container.database.is_init():
         return
@@ -31,7 +30,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     atexit.register(exit_handler)
 
-    init_database()
+    init_database("toto", "toto", "localhost", 5432)
 
     app = Flask(__name__)
     CORS(app)
