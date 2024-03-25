@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:5000/login', {
+async function loginUser(username, password) {
+  return fetch(`http://localhost:5000/login?username=${username}&password=${password}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
   })
-    .then(data => data.json())
  }
 
 function App() {
@@ -18,15 +13,12 @@ function App() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const result = await loginUser({
-      username,
-      password
-    });
+    await loginUser(username, password);
   }
 
   return(
     <div className="login-wrapper">
-      <img src="/logo.jpg" alt="image"></img>
+      <img src="/logo.jpg" alt="logo"></img>
       <div id='filetEntete'></div>
       <h1>Dossier des étudiants</h1>
       <form onSubmit={handleSubmit}>
