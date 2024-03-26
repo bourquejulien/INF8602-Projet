@@ -12,7 +12,7 @@ import atexit
 import sys
 import os
 
-DEFAULT_ADDRESS = "192.168.122.31"
+DEFAULT_ADDRESS = "localhost"
 DEFAULT_PORT = 5432
 
 def init_database(database_info: DatabaseInfo, is_safe: bool):
