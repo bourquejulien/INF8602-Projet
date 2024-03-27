@@ -1,0 +1,50 @@
+body {
+	background-image: url("../public/5000px.png");
+	background-position: center;
+	background-repeat: repeat-y;
+	background-position: top;
+}
+
+.options-select {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.button-select {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.button-select >* {
+	margin: 15px 0;
+}
+
+.info {
+	height: fit-content;
+	width: 100%;
+	/* position: absolute; */
+	text-align: center;
+	/* top: 116px; */
+}
+
+#filetEntete {
+	height: 1px;
+	width: 100%;
+	background-color: #000000;
+	/* position: absolute; */
+	text-align: center;
+	/* top: 116px; */
+}
+
+#filetPiedDePage {
+	height: 15px;
+	background-image: url("../public/59pxcouleur.png");
+	background-position: center;
+	background-repeat: repeat-x;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
