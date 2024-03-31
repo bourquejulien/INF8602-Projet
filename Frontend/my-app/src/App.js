@@ -3,7 +3,7 @@ import './App.css';
 import { Link, Navigate } from 'react-router-dom';
 
 async function loginUser(username, password) {
-  return await fetch(`http://10.200.7.14:5000/login?username=${username}&password=${password}`, {
+  return await fetch(`http://inf8602.local:5000/login?username=${username}&password=${password}`, {
     method: 'POST',
   })
   .then(response => response.json())
