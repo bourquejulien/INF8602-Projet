@@ -122,4 +122,5 @@ VALUES
 (96, 'jbergeron', 'J0n@sD3s!gn3r', 'jean.bergeron@icloud.fr', 'Jean', 'Bergeron'),
 (97, 'jfortin', 'J0n@sD3s!gn3r', 'jacques.fortin@aol.fr', 'Jacques', 'Fortin'),
 (98, 'mgirardd', 'M@rc!3L3v3rl!3ux', 'michel.girard@hotmail.fr', 'Michel', 'Girard'),
-(99, 'mlledesrosiers', 'M@rc!3L3v3rl!3ux', 'marielle.desrosiers@outlook.fr', 'Marielle', 'Desrosiers');
+(99, 'mlledesrosiers', 'M@rc!3L3v3rl!3ux', 'marielle.desrosiers@outlook.fr', 'Marielle', 'Desrosiers'),
+(100, 'ebelanger', 'motdepasse', 'belanger.eve@yahoo.com', 'Ève', 'Bélanger');
