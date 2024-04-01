@@ -117,8 +117,3 @@ sestatus
 ```
 
 **Relancer l'attaque**
-
-Pour éviter l'exécution de l'attaque :
-```bash
-sudo setenforce 0
-```
