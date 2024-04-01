@@ -1,5 +1,12 @@
 # INF8602 - Projet de session
 
+## Prérequis :
+
+Ajouter la ligne suivante dans ``/etc/hosts`` :
+```
+IP_DE_LA_VM  inf8602.local
+```
+
 ## Attaque
 - Accéder à la page : http://inf8602.local
 - Se connecter avec : ``ebelanger``, ``motdepasse``
